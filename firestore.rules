@@ -1,0 +1,44 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Global Default Deny Safety Net
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Reusable Authentication Helpers
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    // Projects: Public can read & write
+    match /projects/{projectId} {
+      allow read, write: if true;
+    }
+
+    // Skills: Public can read & write
+    match /skills/{skillId} {
+      allow read, write: if true;
+    }
+
+    // Experiences: Public can read & write
+    match /experiences/{expId} {
+      allow read, write: if true;
+    }
+
+    // Stages: Public can read & write
+    match /stages/{stageId} {
+      allow read, write: if true;
+    }
+
+    // Settings: Public can read & write
+    match /settings/{settingsId} {
+      allow read, write: if true;
+    }
+
+    // Messages: Anyone can read & write
+    match /messages/{messageId} {
+      allow read, write: if true;
+    }
+  }
+}

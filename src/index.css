@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400..700;1,400..700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-serif: "Playfair Display", serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-stone-105: #f2f1f0;
+  --color-stone-450: #918b86;
+  --color-stone-550: #66615c;
+  --color-stone-605: #514b47;
+  --color-stone-850: #211f1d;
+  --color-stone-855: #1c1917;
+  --color-emerald-605: #047857;
+}
+
+html {
+  scroll-behavior: smooth;
+  height: 100%;
+}
+
+/* Base styling - Creamy Neutral Aesthetic Theme */
+body {
+  background-color: #FAF9F6; /* Luxury Warm Alabaster/Cream */
+  color: #1C1917; /* Warm Stone-900 Charcoal */
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  height: 100%;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Premium bento-card in Neutral Theme */
+.bento-card {
+  background-color: #FFFFFF;
+  border: 1.5px solid #E7E5E4; /* Elegant Stone-200 border */
+  border-radius: 20px;
+  box-shadow: 0 4px 20px -2px rgba(28, 25, 23, 0.03);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bento-card:hover {
+  border-color: #C5A880; /* Warm Brass / Gold Accent */
+  box-shadow: 0 12px 36px -12px rgba(197, 168, 128, 0.18);
+}
+
+.bento-accent-gradient {
+  background: radial-gradient(circle at top left, #FAF5ED 0%, #FFFFFF 60%);
+}
+
+.bento-skill-tag {
+  background: rgba(197, 168, 128, 0.1);
+  border: 1px solid rgba(197, 168, 128, 0.25);
+  color: #8c7355; /* Muted Brass */
+  padding: 4px 12px;
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 500;
+  display: inline-block;
+  transition: all 0.2s ease;
+}
+
+.bento-skill-tag:hover {
+  background: rgba(197, 168, 128, 0.18);
+  border-color: rgba(197, 168, 128, 0.45);
+  color: #70583b;
+}
+
+/* Skip link styled for visibility on focus */
+.skip-link {
+  position: absolute;
+  top: -80px;
+  left: 20px;
+  background-color: #C5A880;
+  color: #1C1917;
+  padding: 10px 20px;
+  border-radius: 8px;
+  z-index: 100;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: bold;
+  transition: top 0.3s ease;
+}
+.skip-link:focus {
+  top: 20px;
+}
+
+/* Keyboard navigation focus ring wrapper */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+[role="button"]:focus-visible {
+  outline: 2px solid #CA8A04 !important;
+  outline-offset: 4px !important;
+  box-shadow: 0 0 0 6px rgba(197, 168, 128, 0.35) !important;
+}
+
+/* ====================================================================
+   INTERACTIVE STORYTELLING TIMELINE STYLES
+   ==================================================================== */
+.timeline-stem {
+  position: absolute;
+  left: 31px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, #E7E5E4 15%, #C5A880 50%, #E7E5E4 95%);
+}
+
+.timeline-node-glow {
+  box-shadow: 0 0 15px rgba(197, 168, 128, 0.4);
+}
+
+/* ====================================================================
+   ACCESSIBILITY CONTROLS OVERRIDES
+   ==================================================================== */
+
+/* Zoom / Large Text Mode */
+html[data-zoom="lg"] {
+  font-size: 118%;
+}
+html[data-zoom="lg"] .bento-card {
+  border-radius: 24px;
+}
+
+/* High Contrast Mode - Overrides all styling with pure contrast */
+html[data-contrast="high"] {
+  --color-contrast-back: #FFFFFF !important;
+  --color-contrast-text: #000000 !important;
+  --color-contrast-border: #000000 !important;
+}
+html[data-contrast="high"] body {
+  background-color: #FFFFFF !important;
+  color: #000000 !important;
+}
+html[data-contrast="high"] header,
+html[data-contrast="high"] main,
+html[data-contrast="high"] footer,
+html[data-contrast="high"] section {
+  background-color: #FFFFFF !important;
+  color: #000000 !important;
+  background-image: none !important;
+}
+html[data-contrast="high"] .bento-card {
+  background-color: #FFFFFF !important;
+  border: 3px solid #000050 !important;
+  color: #000000 !important;
+  box-shadow: none !important;
+}
+html[data-contrast="high"] p,
+html[data-contrast="high"] h1,
+html[data-contrast="high"] h2,
+html[data-contrast="high"] h3,
+html[data-contrast="high"] h4,
+html[data-contrast="high"] span,
+html[data-contrast="high"] label,
+html[data-contrast="high"] input,
+html[data-contrast="high"] textarea {
+  color: #000000 !important;
+}
+html[data-contrast="high"] .bento-skill-tag {
+  background-color: #FFFFFF !important;
+  border: 2px solid #000050 !important;
+  color: #000000 !important;
+  font-weight: bold !important;
+}
+html[data-contrast="high"] button,
+html[data-contrast="high"] a {
+  border: 2.5px solid #000000 !important;
+  background-color: #000000 !important;
+  color: #FFFFFF !important;
+  font-weight: bold !important;
+}
+html[data-contrast="high"] button:hover,
+html[data-contrast="high"] a:hover {
+  background-color: #FFFFFF !important;
+  color: #000000 !important;
+  border-color: #000050 !important;
+}
+html[data-contrast="high"] input,
+html[data-contrast="high"] textarea {
+  background-color: #FFFFFF !important;
+  border: 2.5px solid #000000 !important;
+  color: #000000 !important;
+}
+
+/* Reduced Motion Mode - Stops all animations completely */
+html[data-motion="reduced"] *,
+html[data-motion="reduced"] ::before,
+html[data-motion="reduced"] ::after {
+  animation-delay: -1ms !important;
+  animation-duration: 1ms !important;
+  animation-iteration-count: 1 !important;
+  background-attachment: initial !important;
+  scroll-behavior: auto !important;
+  transition-delay: 0s !important;
+  transition-duration: 0s !important;
+  transform: none !important;
+}
+
+/* Custom glow element pulses rewritten */
+@keyframes gold-pulse {
+  0%, 100% {
+    opacity: 0.1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.2;
+    transform: scale(1.03);
+  }
+}
+.glow-bg {
+  animation: gold-pulse 8s infinite ease-in-out;
+}
+
+/* Scrollbar rules for console */
+.console-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+.console-scrollbar::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+}
+.console-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(197, 168, 128, 0.35);
+  border-radius: 2px;
+}
+.console-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(197, 168, 128, 0.55);
+}

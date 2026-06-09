@@ -1,0 +1,122 @@
+{
+  "entities": {
+    "Project": {
+      "title": "Project",
+      "description": "Represents a project in David Louis's portfolio",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "judul": { "type": "string" },
+        "kategori": { "type": "string" },
+        "deskripsi": { "type": "string" },
+        "url": { "type": "string", "format": "uri" },
+        "gambar": { "type": "string", "format": "uri" }
+      },
+      "required": ["id", "judul", "deskripsi"]
+    },
+    "Skill": {
+      "title": "Skill",
+      "description": "Represents a technical competence in the portfolio",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "keahlian": { "type": "string" },
+        "kategori": { "type": "string" },
+        "rating": { "type": "number" },
+        "deskripsi": { "type": "string" }
+      },
+      "required": ["id", "keahlian", "rating"]
+    },
+    "Experience": {
+      "title": "Experience",
+      "description": "Represents professional experiences and certifications",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "type": { "type": "string", "enum": ["experience", "certification"] },
+        "title": { "type": "string" },
+        "subtitle": { "type": "string" },
+        "date": { "type": "string" },
+        "institution": { "type": "string" },
+        "description": { "type": "string" },
+        "skills": { "type": "string" },
+        "gambar": { "type": "string" }
+      },
+      "required": ["id", "type", "title", "institution"]
+    },
+    "Stage": {
+      "title": "Stage",
+      "description": "Represents a developmental timeline stage",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "phase": { "type": "string" },
+        "era": { "type": "string" },
+        "title": { "type": "string" },
+        "duration": { "type": "string" },
+        "institution": { "type": "string" },
+        "icon": { "type": "string" },
+        "description": { "type": "string" },
+        "skills": { "type": "string" },
+        "gambar": { "type": "string", "format": "uri" },
+        "imageCaption": { "type": "string" }
+      },
+      "required": ["phase", "title", "duration"]
+    },
+    "Settings": {
+      "title": "Settings",
+      "description": "Contains profile config parameters",
+      "type": "object",
+      "properties": {
+        "nama": { "type": "string" },
+        "title": { "type": "string" },
+        "bio": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "github": { "type": "string", "format": "uri" },
+        "linkedin": { "type": "string", "format": "uri" },
+        "instagram": { "type": "string", "format": "uri" }
+      },
+      "required": ["nama", "email"]
+    },
+    "Message": {
+      "title": "Message",
+      "description": "Form message submitted by visitors",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "message": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "read": { "type": "boolean" }
+      },
+      "required": ["id", "name", "email", "message", "timestamp"]
+    }
+  },
+  "firestore": {
+    "/projects/{projectId}": {
+      "schema": "Project",
+      "description": "Portfolio projects collection"
+    },
+    "/skills/{skillId}": {
+      "schema": "Skill",
+      "description": "Portfolio skills catalog collection"
+    },
+    "/experiences/{expId}": {
+      "schema": "Experience",
+      "description": "Portfolio experiences and certificates collection"
+    },
+    "/stages/{stageId}": {
+      "schema": "Stage",
+      "description": "Portfolio timeline stages collection"
+    },
+    "/settings/{settingsId}": {
+      "schema": "Settings",
+      "description": "Portfolio metadata settings and configuration collection"
+    },
+    "/messages/{messageId}": {
+      "schema": "Message",
+      "description": "Inbox messages submitted by visitors"
+    }
+  }
+}
